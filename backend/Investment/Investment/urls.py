@@ -23,5 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path('login',views.login, name="login"),
     re_path('signup',views.register,name="register"),
+    re_path('message',views.contact,name="contact"),
+    re_path('invest/',views.invest,name="invest"),
     
 ]

@@ -5,7 +5,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializer import  UserSerializer
+from .serializer import  UserSerializer,ContactSerializer,InvestSerializer
 
 
 @api_view(['POST'])
@@ -28,4 +28,23 @@ def register(request):
         user.save()
         token=Token.objects.create(user=user)
         return Response({"token":token.key,"user":serializer.data})
+    return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(["POST"])
+def contact(request):
+    serializer=ContactSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"Response": "Message Sent Successfully"})
+    return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["POST"])
+def invest(request):
+    serializer=InvestSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({{"Response": "Investment request successfully sent"}})
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
