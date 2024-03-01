@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from .serializer import  UserSerializer,ContactSerializer,InvestSerializer
 
 
+# A login API 
 @api_view(['POST'])
 def login(request):
     user=get_object_or_404(User,username=request.data['username'])
@@ -18,6 +19,7 @@ def login(request):
     return Response({"token":token.key,"user":serializer.data})
   
 
+# A register API
 @api_view(['POST'])
 def register(request):
     serializer=UserSerializer(data=request.data)
@@ -31,7 +33,7 @@ def register(request):
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 
-
+# An API to add a contact information 
 @api_view(["POST"])
 def contact(request):
     serializer=ContactSerializer(data=request.data)
@@ -41,6 +43,7 @@ def contact(request):
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 
+# An API to add investment 
 @api_view(["POST"])
 def invest(request):
     serializer=InvestSerializer(data=request.data)

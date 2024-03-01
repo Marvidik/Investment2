@@ -9,19 +9,19 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ( 'id','username', 'email', 'password')
 
 
-
+#  Contact serializer
 class ContactSerializer(serializers.ModelSerializer):
     class Meta(object):
         model= Contact
         fields="__all__"
 
-
+#  Wallet serializer
 class WalletSerializer(serializers.ModelSerializer):
     class Meta(object):
         model= Wallet
         fields="__all__"
 
-
+#  Invest serializer
 class InvestSerializer(serializers.ModelSerializer):
     class Meta(object):
         model= Invest

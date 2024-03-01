@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+# Model For the contact form
 class Contact(models.Model):
     name=models.CharField(max_length=100)
     email=models.CharField(max_length=100)
@@ -15,7 +16,7 @@ class Contact(models.Model):
         return self.name
 
 
-
+# model to create a wallet for each user 
 class Wallet(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     bonus=models.IntegerField()
@@ -27,7 +28,7 @@ class Wallet(models.Model):
 
 
 
-
+#model that lets client to invest directly 
 class Invest(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     amount=models.DecimalField(max_digits=20, decimal_places=2,null=True,default=0.00)
