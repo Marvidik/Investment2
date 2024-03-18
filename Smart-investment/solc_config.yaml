@@ -1,0 +1,18 @@
+# solc configuration
+[solidity]
+  # Compiler version
+  version = "0.8.0"
+  
+  # Optimization settings
+  optimizer.enabled = true
+  optimizer.runs = 200
+
+# Compiler sources
+[sources]
+  # Specify source file directories
+  "contracts" = ["contracts"]
+
+# Compiler dependencies
+[dependencies]
+  # Chainlink contracts
+  "@chainlink/contracts" = { git = "https://github.com/smartcontractkit/chainlink-contracts.git", tag = "v0.8.7" }
